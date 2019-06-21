@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'Hbase_Storm_Kafka_ES'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.apache.commons:commons-csv:1.1'
+    compile 'org.apache.storm:storm-kafka:0.10.0'
+    compile 'org.apache.storm:storm-core:0.10.0'
+    compile 'org.apache.storm:storm-hdfs:0.10.0'
+//    compile 'org.apache.storm:kafka-clients:0.10.0.0'
+    compile ('org.apache.kafka:kafka_2.10:0.8.2.1'){
+        exclude group:'org.slf4j'
+        exclude group: 'log4j'
+    }
+    compile group: 'org.apache.storm', name: 'flux-core', version: '0.10.0'
+    compile ('org.apache.hbase:hbase-client:0.98.8-hadoop2'){
+        exclude group:'org.slf4j'
+        exclude group: 'log4j'
+    }
+    compile ('org.elasticsearch.client:elasticsearch-rest-high-level-client:7.1.0') {
+            exclude group:'org.slf4j'
+            exclude group:'org.apache.logging.log4j'
+        }
+
+
+
+}
+
